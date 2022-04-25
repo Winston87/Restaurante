@@ -1,10 +1,9 @@
-import { Router, Request, Response } from "express";// trabalhar com roteameto
+import { Router } from "express";// trabalhar com roteameto
+
+import { CreatUserController } from "./controllers/users/UserController";
 
 const router = Router();
 
-router.get('/teste',(req: Request, res: Response) => {
-
-    return res.json({ok: true })
-})
+router.post('/users', new CreatUserController().handle);
 
 export { router }// exportar router
