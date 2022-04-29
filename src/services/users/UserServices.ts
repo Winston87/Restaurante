@@ -17,11 +17,13 @@ class CreateUserServices {
 
         await userExcption.execute({emai, name, password})
 
+        //await userExcption.emailValid(emai);
+
         const passwordHash = await hash(password, 8)
 
         const salvarUser = await prismaClient.user.create({
             data: {
-                name: name,
+                name: name.toUpperCase(),
                 emai: emai,
                 password: passwordHash
             },
