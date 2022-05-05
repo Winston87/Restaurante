@@ -5,32 +5,31 @@ import { hash } from 'bcryptjs'
 interface UserRequest {
 
     name: string
-    emai: string
+    email: string
     password: string
 }
 
 class CreateUserServices {
 
-    async execute({ name, emai, password }: UserRequest) {
+    async execute({ name, email, password }: UserRequest) {
 
         const userExcption = new ExecptionUser();
 
-        await userExcption.execute({emai, name, password})
-
-        //await userExcption.emailValid(emai);
+        //validar campos
+        await userExcption.execute({email, name, password})
 
         const passwordHash = await hash(password, 8)
 
         const salvarUser = await prismaClient.user.create({
             data: {
                 name: name.toUpperCase(),
-                emai: emai,
+                email: email,
                 password: passwordHash
             },
             select:{
                 id: true,
                 name: true,
-                emai: true
+                email: true
             }
     })
 

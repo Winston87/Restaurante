@@ -1,27 +1,9 @@
-
 import  prismaClient  from '../../prisma';
-import  { compare }  from 'bcryptjs';
+
+ class ValidScript  {
 
 
-interface ValidaUser {
-
-    name: string
-    email: string
-    password: string
-}
-
-interface ValidarLogout  {
-
-    email: string
-    password: string
-}
-
-class ExecptionUser {
-
-
-
-    async execute({email, name, password}: ValidaUser & ValidarLogout) {
-
+    async valid(name, email, password) {
 
         if(!email && !name && !password ){
             throw new Error("Campo e-mail, nome e senha  estão em branco!")
@@ -83,50 +65,8 @@ class ExecptionUser {
     }
 
 
-    async executeLogout({email, password}:  ValidarLogout) {
-
-
-        if(!email && !password ){
-            throw new Error("Campo e-mail e senha estão em branco!")
-        }
-
-
-        if(!email || String(email) === ' ' ){
-            throw new Error("Campo e-mail esta em branco!")
-        }
-
-        if(!password){
-            throw new Error("Campo senha esta em branco!")
-        }
-
-        if(password.length !== 6 ) {
-            throw new Error("Campo senha deve conter 6 digitos!")
-
-        }
-
-        const senhas = await prismaClient.user.findFirst({
-            where: {
-                email: email
-            }
-        })
-
-        if(!senhas) {
-
-            throw new Error("E-mail incorreto!")
-        }
-
-        const validSenha = await compare(password, senhas?.password)
-
-
-        if(!validSenha) {
-
-            throw new Error("Senha incorreta!")
-        }
-
-    }
-
 
 
 }
 
-export { ExecptionUser }
+export default new  ValidScript();

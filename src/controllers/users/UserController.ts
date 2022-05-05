@@ -5,11 +5,11 @@ class CreatUserController {
 
     async handle(req: Request, res: Response) {
 
-        const { name, emai, password } = req.body; // recebendo requisição
+        const { name, email, password } = req.body; // recebendo requisição
 
         const userServices = new CreateUserServices();
 
-        const user = await userServices.execute({ name, emai, password });
+        const user = await userServices.execute({ name, email, password });
 
         return res.json(user)
     }
