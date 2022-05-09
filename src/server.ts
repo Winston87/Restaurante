@@ -1,3 +1,4 @@
+import dotenv from 'dotenv'
 import  express , { Request, Response, NextFunction}  from "express";
 import 'express-async-errors';
 import cors from 'cors';
@@ -5,6 +6,8 @@ import cors from 'cors';
  * ts-node-dev -D efazer script no jsompackge
  */
 import { router } from "./routes";
+
+dotenv.config();
 
 const app = express();
 
@@ -34,4 +37,5 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 
 
 
-app.listen(3333, () => {console.log('servidor online!')})
+app.listen(process.env.POT || 3333, () => {console.log('servidor online!')})
+
