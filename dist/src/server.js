@@ -28,4 +28,4 @@ app.use((err, req, res, next) => {
         message: 'Internal server error'
     });
 }); // fim
-app.listen(process.env.POT || 3333, () => { console.log('servidor online!'); });
+app.listen(process.env.PORT || 3333, () => { console.log('servidor online!'); });
