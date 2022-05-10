@@ -36,6 +36,6 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 })// fim
 
 
-
+//server
 app.listen(process.env.PORT || 3333, () => {console.log('servidor online!')})
 
