@@ -12,7 +12,7 @@ class AuthUserController {
            email, password
        })
 
-       return res.json(auth);
+       return res.json({ok:true});
     }
 
 }
