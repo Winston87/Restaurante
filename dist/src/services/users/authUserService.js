@@ -27,7 +27,7 @@ class AuthUserServie {
             const tokem = (0, jsonwebtoken_1.sign)({
                 name: user.name,
                 email: user.email
-            }, process.env.JWT, {
+            }, ""+process.env.JWT, {
                 subject: user.id,
                 expiresIn: '30d'
             });

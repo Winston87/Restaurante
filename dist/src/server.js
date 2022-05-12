@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const dotenv_1 = __importDefault(require("dotenv"));
 const express_1 = __importDefault(require("express"));
+require("dotenv").config();
 require("express-async-errors");
 const cors_1 = __importDefault(require("cors"));
 /**para rodar o projeto em typescript tem que baixa uma biblioteca
