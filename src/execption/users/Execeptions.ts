@@ -2,7 +2,6 @@
 import  prismaClient  from '../../prisma';
 import  { compare }  from 'bcryptjs';
 
-
 interface ValidaUser {
 
     name: string
@@ -16,11 +15,10 @@ interface ValidarLogout  {
     password: string
 }
 
-class ExecptionUser {
+class ExceptionUser {
 
-
-
-    async execute({email, name, password}: ValidaUser & ValidarLogout) {
+    //validar campos de cadastro
+    async execute({email, name, password}: ValidaUser) {
 
 
         if(!email && !name && !password ){
@@ -67,7 +65,6 @@ class ExecptionUser {
             throw new Error("E-mail ja cadastrado!")
         }
 
-
         // validar email vaido
         let regex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}');
 
@@ -82,7 +79,7 @@ class ExecptionUser {
 
     }
 
-
+    // validar campos de login
     async executeLogout({email, password}:  ValidarLogout) {
 
 
@@ -123,10 +120,10 @@ class ExecptionUser {
             throw new Error("Senha incorreta!")
         }
 
-    }
+     }
 
 
 
 }
 
-export { ExecptionUser }
+export { ExceptionUser }

@@ -1,5 +1,5 @@
 import  prismaClient  from '../../prisma';
-import { ExecptionUser } from '../../execption/users/ExecptionsUser';
+import { ExceptionUser } from '../../execption/users/Execeptions';
 import { hash } from 'bcryptjs'
 
 interface UserRequest {
@@ -11,12 +11,13 @@ interface UserRequest {
 
 class CreateUserServices {
 
+
     async execute({ name, email, password }: UserRequest) {
 
-        const userExcption = new ExecptionUser();
+        const userExcption = new ExceptionUser();
 
         //validar campos
-        await userExcption.execute({email, name, password})
+        await userExcption.execute({email, name, password});
 
         const passwordHash = await hash(password, 8)
 

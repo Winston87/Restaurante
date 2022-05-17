@@ -1,8 +1,6 @@
 import  prismaClient  from '../../prisma';
-import { ExecptionUser } from '../../execption/users/ExecptionsUser';
+import { ExceptionUser } from '../../execption/users/Execeptions';
 import { sign }  from 'jsonwebtoken' // registra e GERA UM TOKEM
-
-
 
 interface AuthRequest {
 
@@ -14,7 +12,7 @@ class AuthUserServie {
 
     async execute({email, password}: AuthRequest) {
 
-        const userExcption = new ExecptionUser();
+        const userExcption = new ExceptionUser();
         await userExcption.executeLogout({email, password})
 
         const user = await prismaClient.user.findFirst({
@@ -26,7 +24,7 @@ class AuthUserServie {
             name: user.name,
             email: user.email
         },
-            process.env.JWT_KEY,
+            ""+process.env.JWT_KEY,
             {
                 subject: user.id,
                 expiresIn: '30d'

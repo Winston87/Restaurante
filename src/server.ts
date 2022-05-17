@@ -2,12 +2,14 @@ import dotenv from 'dotenv'
 import  express , { Request, Response, NextFunction}  from "express";
 import 'express-async-errors';
 import cors from 'cors';
+import path from 'path';
+
 /**para rodar o projeto em typescript tem que baixa uma biblioteca
- * ts-node-dev -D efazer script no jsompackge
+ * ts-node-dev -D e fazer script no jsompackge
  */
 import { router } from "./routes";
 
-dotenv.config();
+require("dotenv").config();
 
 
 const app = express();
@@ -18,6 +20,11 @@ app.use(cors());
 
 app.use(router);// fala que minhas rotas esta dentro de router
 
+//crindo uma rota static para mostrar a foto no front
+app.use(
+    '/files',
+    express.static(path.resolve(__dirname, '..', 'imgBanner'))
+)
 
 //**** tratamento de erro */
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {

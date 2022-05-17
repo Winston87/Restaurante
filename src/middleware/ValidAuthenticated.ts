@@ -1,6 +1,8 @@
 import { NextFunction, Request, Response } from "express";
 import { verify } from "jsonwebtoken";
 
+/** ts que valida o usuario logado para este possa manipular algo caso ele seja autorizado */
+
 interface PayLoad {// pega o id do usuario
 
     sub: string
