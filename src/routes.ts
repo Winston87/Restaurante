@@ -14,6 +14,9 @@ import { RemoveOrdersController } from "./controllers/orders/RemoveOrdersControl
 import { AddItemController } from "./controllers/orders/AddItemOrdersController";
 import { RemoveItemController } from "./controllers/orders/RemoveItemController";
 import { PutOrdersController } from "./controllers/orders/PutOrdersController";
+import { ListOrderController } from "./controllers/orders/ListOrderController";
+import { DetailOrderController } from "./controllers/orders/DetailOrderController";
+import { FinishOrderController } from "./controllers/orders/FinishOrderController";
 
 import upLoadConfig from './imgConfig/multer';
 
@@ -39,5 +42,8 @@ router.delete('/order/remover/table', ValidAuth, new RemoveOrdersController().ha
 router.post('/order/add', ValidAuth, new AddItemController().handle);
 router.delete('/order/remover/item', ValidAuth, new RemoveItemController().handle);
 router.put('/order/make', ValidAuth, new PutOrdersController().handle );
+router.get('/order/listAll', ValidAuth, new ListOrderController().handle);
+router.get('/order/detail', ValidAuth, new  DetailOrderController().handler);
+router.put('/order/finish', ValidAuth, new FinishOrderController().handler);
 
 export { router }// exportar router
