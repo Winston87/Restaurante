@@ -24,26 +24,26 @@ const router = Router();
 const upload = multer(upLoadConfig.upload("imgBanner"));// local da pasta para salvar
 
 // rotas user
-router.post('/users', new CreatUserController().handle);
-router.post('/session', new AuthUserController().handle);
-router.get('/detail',ValidAuth, new DetailUserController().handle );
+router.post('/users', new CreatUserController().handle);// cadastrar usuario
+router.post('/session', new AuthUserController().handle);// login usuario
+router.get('/detail',ValidAuth, new DetailUserController().handle ); // detalhe usuario
 
 //rotas category
-router.post('/category', ValidAuth, new CategoryController().handle);
-router.get('/categorys/list', ValidAuth, new ListCategoryController().handle);
+router.post('/category', ValidAuth, new CategoryController().handle); // cadastrar categoria
+router.get('/categorys/list', ValidAuth, new ListCategoryController().handle); // listar categoria
 
 //rotas product
-router.post('/product', ValidAuth, upload.single('file'), new CreateProductsController().handle);
-router.get('/category/products', ValidAuth, new ListProductCategoryController().handle );
+router.post('/product', ValidAuth, upload.single('file'), new CreateProductsController().handle); // cadastrar categoria
+router.get('/category/products', ValidAuth, new ListProductCategoryController().handle ); // listar categoria
 
 //rotas orders
-router.post('/order', ValidAuth, new CreateOrdersController().handle);
-router.delete('/order/remover/table', ValidAuth, new RemoveOrdersController().handle );
-router.post('/order/add', ValidAuth, new AddItemController().handle);
-router.delete('/order/remover/item', ValidAuth, new RemoveItemController().handle);
-router.put('/order/make', ValidAuth, new PutOrdersController().handle );
-router.get('/order/listAll', ValidAuth, new ListOrderController().handle);
-router.get('/order/detail', ValidAuth, new  DetailOrderController().handler);
-router.put('/order/finish', ValidAuth, new FinishOrderController().handler);
+router.post('/order', ValidAuth, new CreateOrdersController().handle); // abrir pedido mesa
+router.delete('/order/remover/table', ValidAuth, new RemoveOrdersController().handle ); // deletar mesa
+router.post('/order/add', ValidAuth, new AddItemController().handle);  // add um item a mesa
+router.delete('/order/remover/item', ValidAuth, new RemoveItemController().handle); // deletar um item da mesa
+router.put('/order/make', ValidAuth, new PutOrdersController().handle );  // enviar pedido
+router.get('/order/listAll', ValidAuth, new ListOrderController().handle); // listar pedidos feitos
+router.get('/order/detail', ValidAuth, new  DetailOrderController().handler); // detalhe do pedido
+router.put('/order/finish', ValidAuth, new FinishOrderController().handler); // libera pedido para a mesa
 
 export { router }// exportar router
