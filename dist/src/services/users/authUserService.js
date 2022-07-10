@@ -14,12 +14,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthUserServie = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
-const ExecptionsUser_1 = require("../../execption/users/ExecptionsUser");
+const Execeptions_1 = require("../../execption/users/Execeptions");
 const jsonwebtoken_1 = require("jsonwebtoken"); // registra e GERA UM TOKEM
 class AuthUserServie {
     execute({ email, password }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const userExcption = new ExecptionsUser_1.ExecptionUser();
+            const userExcption = new Execeptions_1.ExceptionUser();
             yield userExcption.executeLogout({ email, password });
             const user = yield prisma_1.default.user.findFirst({
                 where: { email: email }
@@ -27,7 +27,7 @@ class AuthUserServie {
             const tokem = (0, jsonwebtoken_1.sign)({
                 name: user.name,
                 email: user.email
-            }, ""+process.env.JWT, {
+            }, "" + process.env.JWT_KEY, {
                 subject: user.id,
                 expiresIn: '30d'
             });

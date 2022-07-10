@@ -14,12 +14,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateUserServices = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
-const ExecptionsUser_1 = require("../../execption/users/ExecptionsUser");
+const Execeptions_1 = require("../../execption/users/Execeptions");
 const bcryptjs_1 = require("bcryptjs");
 class CreateUserServices {
     execute({ name, email, password }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const userExcption = new ExecptionsUser_1.ExecptionUser();
+            const userExcption = new Execeptions_1.ExceptionUser();
             //validar campos
             yield userExcption.execute({ email, name, password });
             const passwordHash = yield (0, bcryptjs_1.hash)(password, 8);

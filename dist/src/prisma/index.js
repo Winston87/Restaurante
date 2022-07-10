@@ -6,4 +6,3 @@ const prismaClient = new client_1.PrismaClient();
 require("dotenv").config();
 exports.default = prismaClient;
 // com este voce consegue fazer um crud total
-
