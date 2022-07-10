@@ -32,6 +32,7 @@ class AuthUserServie {
 
         )
 
+
         return {
             id: user.id,
             name: user.name,
