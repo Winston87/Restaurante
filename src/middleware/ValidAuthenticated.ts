@@ -33,7 +33,7 @@ export function ValidAuth(req: Request, res: Response, next: NextFunction) {
         return next();
 
     } catch (error) {
-        res.status(401).json("Usuario não autorizado!").end();
+        res.status(401).json("Usuario não autorizado erro!").end();
 
 
     }
