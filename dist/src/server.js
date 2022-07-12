@@ -31,4 +31,4 @@ app.use((err, req, res, next) => {
     });
 }); // fim
 //server
-app.listen(process.env.PORT || 3333, () => { console.log('servidor online!'); });
+app.listen(process.env.PORT, () => { console.log('servidor online!'); });
