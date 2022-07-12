@@ -35,7 +35,7 @@ export function ValidAuth(req: Request, res: Response, next: NextFunction) {
     } catch (error) {
         res.status(401).json("Usuario não autorizado erro!").end();
 
-
+        //heroku logs --tail para ver oque ta acontecendo no heroku viu ai
     }
 
 
