@@ -91,3 +91,12 @@ model Item { // lado muitos na relacão
 
 
 }
+
+model Menu {
+
+    id String @id @default(uuid())
+    menu_product String
+    created_at DateTime? @default(now())
+
+    @@map("cardapio")
+}

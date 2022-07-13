@@ -1,5 +1,6 @@
 import dotenv from 'dotenv'
 import  express , { Request, Response, NextFunction}  from "express";
+import FileUpload from 'express-fileupload';
 import 'express-async-errors';
 import cors from 'cors';
 import path from 'path';
@@ -24,7 +25,9 @@ app.use(router);// fala que minhas rotas esta dentro de router
 app.use(
     '/files',
     express.static(path.resolve(__dirname, '..', 'imgBanner'))
-)
+);
+
+//app.use(FileUpload());
 
 //**** tratamento de erro */
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {

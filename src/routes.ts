@@ -17,11 +17,15 @@ import { PutOrdersController } from "./controllers/orders/PutOrdersController";
 import { ListOrderController } from "./controllers/orders/ListOrderController";
 import { DetailOrderController } from "./controllers/orders/DetailOrderController";
 import { FinishOrderController } from "./controllers/orders/FinishOrderController";
+//menu
+import { ListMenuController } from "./controllers/menu/ListMenuController";
+import { UploadMenuController } from "./controllers/menu/UploadMenuContreoller";
 
 import upLoadConfig from './imgConfig/multer';
 
 const router = Router();
-const upload = multer(upLoadConfig.upload("imgBanner"));// local da pasta para salvar
+const foto = multer(upLoadConfig.upload("imgBanner"));// local da pasta para salvar
+const menu = multer(upLoadConfig.upload("imgMenu"));
 
 // rotas user
 router.post('/users', new CreatUserController().handle);// cadastrar usuario
@@ -33,7 +37,7 @@ router.post('/category', ValidAuth, new CategoryController().handle); // cadastr
 router.get('/categorys/list', ValidAuth, new ListCategoryController().handle); // listar categoria
 
 //rotas product
-router.post('/product', ValidAuth, upload.single('file'), new CreateProductsController().handle); // cadastrar categoria
+router.post('/product', ValidAuth, foto.single('file'), new CreateProductsController().handle); // cadastrar categoria
 router.get('/category/products', ValidAuth, new ListProductCategoryController().handle ); // listar categoria
 
 //rotas orders
@@ -45,5 +49,9 @@ router.put('/order/make', ValidAuth, new PutOrdersController().handle );  // env
 router.get('/order/listAll', ValidAuth, new ListOrderController().handle); // listar pedidos feitos
 router.get('/order/detail', ValidAuth, new  DetailOrderController().handler); // detalhe do pedido
 router.put('/order/finish', ValidAuth, new FinishOrderController().handler); // libera pedido para a mesa
+
+// rota menu
+router.get('/menu', new ListMenuController().handle);
+router.post('/menu/upload',menu.single('file'), new UploadMenuController().handle);
 
 export { router }// exportar router
