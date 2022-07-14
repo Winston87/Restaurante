@@ -18,6 +18,7 @@ import { ListOrderController } from "./controllers/orders/ListOrderController";
 import { DetailOrderController } from "./controllers/orders/DetailOrderController";
 import { FinishOrderController } from "./controllers/orders/FinishOrderController";
 //menu
+import { MenuController } from "./controllers/menu/MenuController";
 import { ListMenuController } from "./controllers/menu/ListMenuController";
 import { UploadMenuController } from "./controllers/menu/UploadMenuContreoller";
 
@@ -51,7 +52,8 @@ router.get('/order/detail', ValidAuth, new  DetailOrderController().handler); //
 router.put('/order/finish', ValidAuth, new FinishOrderController().handler); // libera pedido para a mesa
 
 // rota menu
-router.get('/menu', new ListMenuController().handle);
+router.get('/menu', new MenuController().handle);
+router.get('/menu/product', new ListMenuController().handle);
 router.post('/menu/upload',menu.single('file'), new UploadMenuController().handle);
 
 export { router }// exportar router

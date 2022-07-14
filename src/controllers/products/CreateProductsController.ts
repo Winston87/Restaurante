@@ -31,7 +31,6 @@ class CreateProductsController {
     }
 
 
-
 }
 
 export { CreateProductsController }
