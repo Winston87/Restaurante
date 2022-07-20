@@ -1,5 +1,5 @@
 import prismaClient from "../../prisma";
-import { ExceptionCategory } from '../../execption/category/Execeptions'
+import { ExceptionCategory } from '../../exceptions/category/Execeptions'
 
 interface Category {
 

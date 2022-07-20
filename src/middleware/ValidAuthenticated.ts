@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { verify } from "jsonwebtoken";
+import { erros } from '../exceptions/mensege/MensegeError'
 
 /** ts que valida o usuario logado para este possa manipular algo caso ele seja autorizado */
 
@@ -13,7 +14,7 @@ export function ValidAuth(req: Request, res: Response, next: NextFunction) {
     const tokem = req.headers.authorization; // pega o tokem no cabelho do user logado
 
     if(!tokem){
-        res.status(401).json("Usuario não autorizado!").end();
+        res.status(401).json(erros.TOKEM_INVALIDO).end();
     }
 
     const [, tokemUser] = tokem.split(" "); // descontrucao do tokem
@@ -33,9 +34,8 @@ export function ValidAuth(req: Request, res: Response, next: NextFunction) {
         return next();
 
     } catch (error) {
-        res.status(401).json("Usuario não autorizado erro!").end();
+        res.status(401).json(erros.VALIDA_TOKEM).end();
 
-        //heroku logs --tail para ver oque ta acontecendo no heroku viu ai
     }
 
 

@@ -25,12 +25,16 @@ model User {
 
 }
 
+model Commission {
+
+    id String @id @default(uuid())
+    variable String
+}
+
 model Category {
 
     id String @id @default(uuid())
     name String
-    created_at DateTime? @default(now())
-    updated_at DateTime? @default(now())
 
     @@map("categorias")
 
@@ -45,8 +49,6 @@ model Product {
     price String
     description String
     banner String
-    created_at DateTime? @default(now())
-    updated_at DateTime? @default(now())
 
     category Category @relation(fields: [category_id], references: [id])
 
@@ -65,8 +67,6 @@ model Order { // lado 1 de muitos na relacão
     draft Boolean @default(true)
     name String?
     created_at DateTime? @default(now())
-    updated_at DateTime? @default(now())
-
 
     @@map("pedidos")
 
@@ -78,13 +78,11 @@ model Item { // lado muitos na relacão
 
     id String @id @default(uuid())
     amount Int
-    created_at DateTime? @default(now())
-    updated_at DateTime? @default(now())
 
     order Order @relation(fields: [ordem_id], references: [id])
     product Product @relation(fields: [product_id], references: [id])// item tem varios produtos
 
-    @@map("itensProdutos")
+    @@map("itens")
 
     ordem_id String
     product_id String

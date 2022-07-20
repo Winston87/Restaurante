@@ -7,7 +7,15 @@ interface Menu {
 
 class UploadMenuServices {
 
-    async execute({menu_product}: Menu ) {
+    async execute({menu_product}: Menu) {
+
+        const menuId = await prismaClient.menu.findFirst({
+
+            select: {
+                id:true
+            }
+        });
+
 
         const menu = await prismaClient.menu.create({
 
@@ -20,8 +28,20 @@ class UploadMenuServices {
 
         });
 
+        if( menuId ){
+
+            await prismaClient.menu.deleteMany({
+                where: {
+                    id: menuId.id
+                }
+            });
+        }
+
         return menu;
+
+
     }
 }
 
 export { UploadMenuServices }
+

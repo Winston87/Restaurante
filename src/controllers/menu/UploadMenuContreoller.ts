@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { UploadMenuServices } from '../../services/menu/UploadMenuServices';
+import { Mensege, erros } from '../../exceptions/mensege/MensegeError'
 
 class UploadMenuController {
 
@@ -9,7 +10,7 @@ class UploadMenuController {
 
         if(!req.file) {
 
-            throw new Error("Falha em salvar imagem!");
+            throw new Mensege(erros.FALHA_SALVA_IMAGEM);
 
         }else{
 
@@ -21,9 +22,9 @@ class UploadMenuController {
 
             });
 
-        return res.json(product);
-    }
+            return res.json(product);
+        }
 
-}
+    }
 }
 export { UploadMenuController }

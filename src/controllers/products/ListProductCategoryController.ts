@@ -10,8 +10,7 @@ class ListProductCategoryController {
         const category = new ListProductCategoryServices();
 
         const products = await category.execute({
-             category_id
-
+            category_id
         });
 
         return res.json(products);
@@ -21,3 +20,6 @@ class ListProductCategoryController {
 }
 
 export { ListProductCategoryController }
+
+
+

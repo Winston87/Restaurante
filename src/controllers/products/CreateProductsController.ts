@@ -1,5 +1,7 @@
 import { Request, Response } from "express";
 import { CreateProductsServices } from "../../services/products/CreateProductsServices";
+import { Mensege, erros } from '../../exceptions/mensege/MensegeError'
+
 
 class CreateProductsController {
 
@@ -7,11 +9,13 @@ class CreateProductsController {
 
         const { name, price, description, category_id } = req.body;
 
+
+
         const createProduct = new CreateProductsServices();
 
         if(!req.file) {
 
-            throw new Error("Falha em salvar imagem!");
+            throw new Mensege(erros.FALHA_SALVA_IMAGEM);
 
         }else{
 
@@ -29,7 +33,6 @@ class CreateProductsController {
         }
 
     }
-
 
 }
 

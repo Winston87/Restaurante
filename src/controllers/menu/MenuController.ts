@@ -1,20 +1,32 @@
+import prismaClient from "../../prisma";
 import { Request, Response } from 'express';
 import qr from 'qr-image';
+
 
 class MenuController {
 
     async handle(req: Request, res: Response) {
 
-        const url = 'https://malagueta.herokuapp.com/menu/product';
+        const menu = await prismaClient.menu.findFirst({
+            select: {
+                menu_product: true
+            }
+        });
 
-        const code = qr.image(url, {type: 'svg'})
+        //const url = `localhost:3333/files/menu/${menu.menu_product}`;
+        const cardapio = menu.menu_product;
 
-        res.type('svg');
+        const url = `http://af17-45-179-106-105.ngrok.io/files/menu/${cardapio}`;
+
+        const code = qr.image(url, {type:'png'})
+
+        res.type('png');
 
         return code.pipe(res);
 
 
     }
+
 }
 
 export { MenuController }

@@ -11,6 +11,7 @@ class AddItemOrdersServices {
 
     async execute({ ordem_id, product_id, amount }: ItemOrders ) {
 
+
         const addItem = await prismaClient.item.create({
 
             data: {

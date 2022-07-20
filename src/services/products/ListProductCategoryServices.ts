@@ -1,3 +1,4 @@
+import { Prisma } from ".prisma/client";
 import prismaClient from "../../prisma";
 
 interface ProductsCategory {
@@ -13,10 +14,17 @@ class ListProductCategoryServices {
 
             where: {
                 category_id: category_id
+
             }
         });
 
-        return getFindProducts;
+
+
+
+        const query = await prismaClient.$queryRaw(Prisma.sql`SELECT name, price, description, banner FROM produtos WHERE category_id = ${category_id}`)
+
+        console.log(query)
+        return (await query);
 
     }
 }

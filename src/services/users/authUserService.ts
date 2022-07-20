@@ -1,5 +1,5 @@
 import  prismaClient  from '../../prisma';
-import { ExceptionUser } from '../../execption/users/Execeptions';
+import { InternalError } from '../../exceptions/users/Execeptions';
 import { sign }  from 'jsonwebtoken' // registra e GERA UM TOKEM
 
 interface AuthRequest {
@@ -12,12 +12,12 @@ class AuthUserServie {
 
     async execute({email, password}: AuthRequest) {
 
-        const userExcption = new ExceptionUser();
+        const userExcption = new InternalError();
         await userExcption.executeLogout({email, password})
 
         const user = await prismaClient.user.findFirst({
             where: {email:email}
-        })
+        });
 
         const tokem = sign({// payload
 
@@ -30,7 +30,7 @@ class AuthUserServie {
                 expiresIn: '30d'
             }
 
-        )
+        );
 
 
         return {

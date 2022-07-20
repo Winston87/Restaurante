@@ -1,5 +1,5 @@
 import  prismaClient  from '../../prisma';
-import { ExceptionUser } from '../../execption/users/Execeptions';
+import { InternalError } from '../../exceptions/users/Execeptions';
 import { hash } from 'bcryptjs'
 
 interface UserRequest {
@@ -14,12 +14,12 @@ class CreateUserServices {
 
     async execute({ name, email, password }: UserRequest) {
 
-        const userExcption = new ExceptionUser();
+        const userExcption = new InternalError();
 
         //validar campos
         await userExcption.execute({email, name, password});
 
-        const passwordHash = await hash(password, 8)
+        const passwordHash = await hash(password, 8);
 
         const salvarUser = await prismaClient.user.create({
             data: {
@@ -41,4 +41,5 @@ class CreateUserServices {
 }
 
 export { CreateUserServices }
+
 

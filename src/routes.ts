@@ -1,14 +1,18 @@
 import { Router } from "express";// trabalhar com roteameto
 import multer from 'multer';
-
+//user
 import { CreatUserController } from "./controllers/users/UserController";
 import { AuthUserController } from "./controllers/users/AuthUserController";
 import { DetailUserController } from "./controllers/users/DetailUserController";
+//validar acesso via token
 import { ValidAuth } from "./middleware/ValidAuthenticated";
+//category
 import { CategoryController } from "./controllers/category/CategoryController";
 import { ListCategoryController } from "./controllers/category/ListCategoryController";
+//product
 import { CreateProductsController } from "./controllers/products/CreateProductsController";
 import { ListProductCategoryController } from "./controllers/products/ListProductCategoryController";
+//order
 import { CreateOrdersController } from "./controllers/orders/CreateOrdersController";
 import { RemoveOrdersController } from "./controllers/orders/RemoveOrdersController";
 import { AddItemController } from "./controllers/orders/AddItemOrdersController";
@@ -21,10 +25,11 @@ import { FinishOrderController } from "./controllers/orders/FinishOrderControlle
 import { MenuController } from "./controllers/menu/MenuController";
 import { ListMenuController } from "./controllers/menu/ListMenuController";
 import { UploadMenuController } from "./controllers/menu/UploadMenuContreoller";
-
+//files
 import upLoadConfig from './imgConfig/multer';
 
 const router = Router();
+// configuração para salvar files
 const foto = multer(upLoadConfig.upload("imgBanner"));// local da pasta para salvar
 const menu = multer(upLoadConfig.upload("imgMenu"));
 

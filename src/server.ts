@@ -27,6 +27,11 @@ app.use(
     express.static(path.resolve(__dirname, '..', 'imgBanner'))
 );
 
+app.use(
+    '/files/menu',
+    express.static(path.resolve(__dirname, '..', 'imgMenu'))
+);
+
 //app.use(FileUpload());
 
 //**** tratamento de erro */
