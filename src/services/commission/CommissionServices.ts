@@ -1,35 +1,46 @@
-import { Prisma } from '.prisma/client';
 import prismaClient from "../../prisma";
 
-interface DetailOrder {
+interface Order {
 
-    order_id: string
+    item_id: string
+    user_id: string
+    amount: number
+    price: string
+    sales: number
 }
 
-class DetailOrderServices {
+class CommissionServices {
 
-    async execute({order_id}: DetailOrder) {
+    async execute({item_id,user_id, amount , price, sales}: Order) {
 
-        const orders = await prismaClient.item.findMany({
+        const comissao = prismaClient.commission.create({
 
-            where: {
-                ordem_id: order_id
+
+            data: {
+                id:item_id,
+                user_id: user_id,
+                amount: amount,
+                price: price,
+                sales: sales
             },
-            include: {
-
-                product: true,
-                order: true,
-            },
-
+            select: {
+                id:true,
+                amount: true,
+                price: true,
+                sales: true
+            }
         });
 
-        return orders;
+        return comissao;
     }
+
+
 }
 
-export { DetailOrderServices }
 
-///SELECT DISTINCT * FROM  itens WHERE ordem_id = 'f2a8253f-45c8-412f-a367-67c9ad60573d'
+export { CommissionServices }
+
+// SELECT DISTINCT * FROM  itens WHERE ordem_id = 'f2a8253f-45c8-412f-a367-67c9ad60573d'
 // SELECT * FROM itens WHERE product_id = '9415daa1-550d-4893-a83b-bcedde21491c'
 
 // SELECT price FROM produtos, itens WHERE ordem_id = 'f2a8253f-45c8-412f-a367-67c9ad60573d'

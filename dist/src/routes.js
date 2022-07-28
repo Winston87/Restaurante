@@ -22,6 +22,8 @@ const PutOrdersController_1 = require("./controllers/orders/PutOrdersController"
 const ListOrderController_1 = require("./controllers/orders/ListOrderController");
 const DetailOrderController_1 = require("./controllers/orders/DetailOrderController");
 const FinishOrderController_1 = require("./controllers/orders/FinishOrderController");
+const PutOrderItemController_1 =require( "./controllers/orders/PutOrderItemController");///
+
 const multer_2 = __importDefault(require("./imgConfig/multer"));
 const router = (0, express_1.Router)();
 exports.router = router;
@@ -45,3 +47,4 @@ router.put('/order/make', ValidAuthenticated_1.ValidAuth, new PutOrdersControlle
 router.get('/order/listAll', ValidAuthenticated_1.ValidAuth, new ListOrderController_1.ListOrderController().handle); // listar pedidos feitos
 router.get('/order/detail', ValidAuthenticated_1.ValidAuth, new DetailOrderController_1.DetailOrderController().handler); // detalhe do pedido
 router.put('/order/finish', ValidAuthenticated_1.ValidAuth, new FinishOrderController_1.FinishOrderController().handler); // libera pedido para a mesa
+router.put('/order/item',ValidAuthenticated_1.ValidAuth, new PutOrderItemController_1.PutOrderItemController().handle);// atualizar quantidade do item no pedido//

@@ -10,8 +10,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
-
 model User {
 
     id String @id @default(uuid())
@@ -23,12 +21,22 @@ model User {
 
     @@map("usuarios")
 
+    commission Commission[]
+
 }
 
 model Commission {
 
     id String @id @default(uuid())
-    variable String
+    amount Int
+    price String
+    sales Float
+    created_at DateTime? @default(now())
+
+    user User @relation(fields: [user_id], references: [id])
+    @@map("comissao")
+
+    user_id String
 }
 
 model Category {
@@ -71,7 +79,6 @@ model Order { // lado 1 de muitos na relacão
     @@map("pedidos")
 
     itens Item[]
-
 }
 
 model Item { // lado muitos na relacão
@@ -86,7 +93,6 @@ model Item { // lado muitos na relacão
 
     ordem_id String
     product_id String
-
 
 }
 

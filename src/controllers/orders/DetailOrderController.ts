@@ -13,9 +13,12 @@ class DetailOrderController {
             order_id
         });
 
+        console.log(order_id)
+
         return res.json(listDetail);
 
     }
 }
 
 export { DetailOrderController }
+
