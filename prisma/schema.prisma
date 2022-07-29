@@ -89,7 +89,7 @@ model Item { // lado muitos na relacão
     order Order @relation(fields: [ordem_id], references: [id])
     product Product @relation(fields: [product_id], references: [id])// item tem varios produtos
 
-    @@map("itens")
+    @@map("itensProdutos")
 
     ordem_id String
     product_id String

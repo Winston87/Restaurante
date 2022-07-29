@@ -2,3 +2,4 @@ import { PutOrderItemController } from "./controllers/orders/PutOrderItemControl
 
 
 router.put('/order/item',ValidAuth, new PutOrderItemController().handle);// atualizar quantidade do item no pedido
+
