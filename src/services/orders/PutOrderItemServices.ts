@@ -39,13 +39,6 @@ class PutOrderItemService {
                         price: true,
                         banner: true,
 
-                        item: {
-                            select: {
-                                id: true,
-                                amount: true
-                            }
-                        }
-
                     }
                 }
             }

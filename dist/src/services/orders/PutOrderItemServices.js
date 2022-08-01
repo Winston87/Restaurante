@@ -76,13 +76,7 @@ var PutOrderItemService = /** @class */ (function () {
                                             name: true,
                                             description: true,
                                             price: true,
-                                            banner: true,
-                                            item: {
-                                                select: {
-                                                    id: true,
-                                                    amount: true
-                                                }
-                                            }
+                                            banner: true
                                         }
                                     }
                                 },
