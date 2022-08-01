@@ -36,68 +36,52 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-exports.PutOrderItemService = void 0;
+exports.DetailOrderServices = void 0;
 var prisma_1 = require("../../prisma");
-var PutOrderItemService = /** @class */ (function () {
-    function PutOrderItemService() {
+var DetailOrderServices = /** @class */ (function () {
+    function DetailOrderServices() {
     }
-    PutOrderItemService.prototype.execute = function (_a) {
-        var item_id = _a.item_id, amount = _a.amount;
+    DetailOrderServices.prototype.execute = function (_a) {
+        var order_id = _a.order_id;
         return __awaiter(this, void 0, void 0, function () {
-            var itemUpdate, itens, _b, _c;
-            var _d, _e;
-            return __generator(this, function (_f) {
-                switch (_f.label) {
-                    case 0:
-                        itemUpdate = prisma_1["default"].item.update({
+            var orders;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0: return [4 /*yield*/, prisma_1["default"].item.findMany({
                             where: {
-                                id: item_id
+                                ordem_id: order_id
                             },
-                            data: {
-                                amount: amount
-                            },
-                            select: {
-                                ordem_id: true,
+                            include: {
                                 product: true,
-                                amount: true
-                            }
-                        });
-                        _c = (_b = prisma_1["default"].item).findMany;
-                        _d = {};
-                        _e = {};
-                        return [4 /*yield*/, itemUpdate];
-                    case 1:
-                        itens = _c.apply(_b, [(_d.where = (_e.ordem_id = (_f.sent()).ordem_id,
-                                _e),
-                                _d.include = {
-                                    product: {
-                                        select: {
-                                            id: true,
-                                            name: true,
-                                            description: true,
-                                            price: true,
-                                            banner: true
+                                order: {
+                                    select: {
+                                        itens: {
+                                            select: {
+                                                amount: true
+                                            }
                                         }
                                     }
-                                },
-                                _d)]);
-                        return [2 /*return*/, itens];
+                                }
+                            }
+                        })];
+                    case 1:
+                        orders = _b.sent();
+                        return [2 /*return*/, orders];
                 }
             });
         });
     };
-    return PutOrderItemService;
+    return DetailOrderServices;
 }());
-exports.PutOrderItemService = PutOrderItemService;
-// const putItem =  prismaClient.item.update({
-//     where: {
-//         id: item_id
-//     },
-//     data: {
-//         product: {
-//             update: {
-//                 price: price
-//             }
-//         }
-//     }
-// });
+exports.DetailOrderServices = DetailOrderServices;
+///SELECT DISTINCT * FROM  itens WHERE ordem_id = 'f2a8253f-45c8-412f-a367-67c9ad60573d'
+// SELECT * FROM itens WHERE product_id = '9415daa1-550d-4893-a83b-bcedde21491c'
+// SELECT price FROM produtos, itens WHERE ordem_id = 'f2a8253f-45c8-412f-a367-67c9ad60573d'
+// SELECT price FROM produtos p  INNER JOIN itens c ON p.id = c.product_id
+// WHERE c.ordem_id = 'f2a8253f-45c8-412f-a367-67c9ad60573d'
+// SELECT price, amount FROM produtos p  INNER JOIN itens c ON p.id = c.product_id
+// WHERE c.ordem_id = 'f2a8253f-45c8-412f-a367-67c9ad60573d'
+// SELECT SUM(amount) as qt FROM produtos p  INNER JOIN itens c ON p.id = c.product_id
+// WHERE c.ordem_id = 'f2a8253f-45c8-412f-a367-67c9ad60573d'
+// SELECT name, price, amount FROM produtos p  INNER JOIN itens c ON p.id = c.product_id
+// WHERE c.ordem_id = 'f2a8253f-45c8-412f-a367-67c9ad60573d'
