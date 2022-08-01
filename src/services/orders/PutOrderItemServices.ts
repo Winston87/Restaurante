@@ -31,12 +31,6 @@ class PutOrderItemService {
                 ordem_id: (await itemUpdate).ordem_id
             },
             include: {
-                order: {
-                    select: {
-                        id: true,
-
-                    }
-                },
                 product: {
                     select: {
                         id: true,

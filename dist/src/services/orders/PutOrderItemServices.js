@@ -70,11 +70,6 @@ var PutOrderItemService = /** @class */ (function () {
                         itens = _c.apply(_b, [(_d.where = (_e.ordem_id = (_f.sent()).ordem_id,
                                 _e),
                                 _d.include = {
-                                    order: {
-                                        select: {
-                                            id: true
-                                        }
-                                    },
                                     product: {
                                         select: {
                                             id: true,
