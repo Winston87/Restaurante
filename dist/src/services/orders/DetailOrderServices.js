@@ -51,15 +51,16 @@ var DetailOrderServices = /** @class */ (function () {
                             where: {
                                 ordem_id: order_id
                             },
-                            include: {
-                                product: true,
-                                order: {
+                            select: {
+                                id: true,
+                                amount: true,
+                                product: {
                                     select: {
-                                        itens: {
-                                            select: {
-                                                amount: true
-                                            }
-                                        }
+                                        id: true,
+                                        name: true,
+                                        description: true,
+                                        price: true,
+                                        banner: true
                                     }
                                 }
                             }

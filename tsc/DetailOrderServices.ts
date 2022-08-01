@@ -15,16 +15,18 @@ class DetailOrderServices {
             where: {
                 ordem_id: order_id
             },
-            include: {
+            select: {
+                id: true,
+                amount: true,
 
-                product: true,
-                order: {
+                product: {
                     select: {
-                        itens: {
-                            select: {
-                                amount: true
-                            }
-                        }
+                        id: true,
+                        name: true,
+                        description: true,
+                        price: true,
+                        banner: true,
+
                     }
                 }
             },
