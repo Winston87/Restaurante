@@ -15,11 +15,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.GetProductsServices = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class GetProductsServices {
-    execute({ product_id }) {
+    execute({ id }) {
         return __awaiter(this, void 0, void 0, function* () {
             const product = prisma_1.default.product.findFirst({
                 where: {
-                    id: product_id
+                    id: id
                 }
             });
             return product;

@@ -41,7 +41,7 @@ router.post('/category', ValidAuthenticated_1.ValidAuth, new CreateCategoryContr
 router.get('/categorys/list', ValidAuthenticated_1.ValidAuth, new ListCategoryController_1.ListCategoryController().handle);
 router.post('/product', ValidAuthenticated_1.ValidAuth, foto.single('file'), new CreateProductsController_1.CreateProductsController().handle);
 router.get('/category/products', ValidAuthenticated_1.ValidAuth, new ListProductCategoryController_1.ListProductCategoryController().handle);
-router.get('/product/search/update:id', ValidAuthenticated_1.ValidAuth, new GetProductsController_1.GetProductsController().handle);
+router.get('/product/search/update', ValidAuthenticated_1.ValidAuth, new GetProductsController_1.GetProductsController().handle);
 router.put('/product/update', foto.single('file'), new PutProductController_1.PutProductController().handle);
 router.post('/order', ValidAuthenticated_1.ValidAuth, new CreateOrdersController_1.CreateOrdersController().handle);
 router.delete('/order/remover/table', ValidAuthenticated_1.ValidAuth, new RemoveOrdersController_1.RemoveOrdersController().handle);

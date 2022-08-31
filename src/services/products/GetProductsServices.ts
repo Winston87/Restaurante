@@ -2,16 +2,16 @@ import prismaClient from "../../prisma";
 
 interface GetProduct {
 
-    product_id: string
+    id: string
 }
 
 class GetProductsServices {
 
-    async execute({product_id}: GetProduct) {
+    async execute({id}: GetProduct) {
 
         const product = prismaClient.product.findFirst({
             where: {
-                id: product_id
+                id: id
 
             }
         });

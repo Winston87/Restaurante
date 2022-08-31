@@ -14,10 +14,10 @@ const GetProductsServices_1 = require("../../services/products/GetProductsServic
 class GetProductsController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const product_id = req.query.product_id;
+            const id = req.params.id;
             const productServices = new GetProductsServices_1.GetProductsServices();
             const product = yield productServices.execute({
-                product_id
+                id
             });
             return res.json(product);
         });

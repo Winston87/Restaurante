@@ -6,12 +6,12 @@ class GetProductsController {
 
     async handle(req:Request, res: Response ) {
 
-        const product_id = req.query.product_id as string;
+        const id = req.params.id as string;
 
         const productServices = new GetProductsServices();
 
         const product = await productServices.execute({
-            product_id
+            id
         });
 
         return res.json(product);
