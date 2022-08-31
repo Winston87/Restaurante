@@ -12,7 +12,7 @@ class MenuController {
             }
         });
 
-        const url = `localhost:3333/files/menu/${menu.menu_product}`;
+        const url = `https://malagueta.herokuapp.com/files/menu/${menu.menu_product}`;
         const cardapio = menu.menu_product;
 
         //const url = `http://af17-45-179-106-105.ngrok.io/files/menu/${cardapio}`;
