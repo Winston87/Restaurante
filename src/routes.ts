@@ -85,3 +85,4 @@ router.post('/menu/upload',ValidAuth, menu.single('file'), new UploadMenuControl
 router.post('/comissao',ValidAuth, new CreateCommissionController().handle); ///////////////////////////////////////////////////////
 
 export { router }// exportar router
+
