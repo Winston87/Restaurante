@@ -23,7 +23,7 @@ class MenuController {
                     menu_product: true
                 }
             });
-            const url = `https://malagueta.herokuapp.com/files/menu/${menu.menu_product}`;
+            const url = 'https://www.ilovepdf.com/pt/word_para_pdf';
             const cardapio = menu.menu_product;
             const code = qr_image_1.default.image(url, { type: 'png' });
             res.type('png');

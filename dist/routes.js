@@ -52,7 +52,7 @@ router.get('/order/listAll', ValidAuthenticated_1.ValidAuth, new ListOrderContro
 router.get('/order/detail', ValidAuthenticated_1.ValidAuth, new DetailOrderController_1.DetailOrderController().handler);
 router.put('/order/finish', ValidAuthenticated_1.ValidAuth, new FinishOrderController_1.FinishOrderController().handler);
 router.put('/order/item', ValidAuthenticated_1.ValidAuth, new PutOrderItemController_1.PutOrderItemController().handle);
-router.get('/menu', ValidAuthenticated_1.ValidAuth, new MenuController_1.MenuController().handle);
+router.get('/menu', new MenuController_1.MenuController().handle);
 router.get('/menu/product', new ListMenuController_1.ListMenuController().handle);
 router.post('/menu/upload', ValidAuthenticated_1.ValidAuth, menu.single('file'), new UploadMenuContreoller_1.UploadMenuController().handle);
 router.post('/comissao', ValidAuthenticated_1.ValidAuth, new CommissionController_1.CreateCommissionController().handle);
