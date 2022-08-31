@@ -76,7 +76,7 @@ router.put('/order/item',ValidAuth, new PutOrderItemController().handle);// atua
 
 
 // rota menu
-router.get('/menu',ValidAuth, new MenuController().handle); // visualizar cardapio
+router.get('/menu', new MenuController().handle); // visualizar cardapio
 router.get('/menu/product', new ListMenuController().handle); //
 router.post('/menu/upload',ValidAuth, menu.single('file'), new UploadMenuController().handle); // subie um cardapio pdf para o servidor
 
