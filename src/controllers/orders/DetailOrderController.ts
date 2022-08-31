@@ -7,13 +7,11 @@ class DetailOrderController {
 
         const order_id = req.query.order_id as string
 
-        const orders = new DetailOrderServices();
+        const ordersServices = new DetailOrderServices();
 
-        const listDetail = await orders.execute({
+        const listDetail = await ordersServices.execute({
             order_id
         });
-
-        console.log(order_id)
 
         return res.json(listDetail);
 

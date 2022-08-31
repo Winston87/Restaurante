@@ -21,6 +21,7 @@ app.use(cors());
 
 app.use(router);// fala que minhas rotas esta dentro de router
 
+
 //crindo uma rota static para mostrar a foto no front
 app.use(
     '/files',
@@ -54,4 +55,5 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 
 //server
 app.listen(process.env.PORT, () => {console.log('servidor online!')})
+
 

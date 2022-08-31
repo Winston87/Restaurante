@@ -85,6 +85,8 @@ model Item { // lado muitos na relacão
 
     id String @id @default(uuid())
     amount Int
+    created_at DateTime? @default(now())
+
 
     order Order @relation(fields: [ordem_id], references: [id])
     product Product @relation(fields: [product_id], references: [id])// item tem varios produtos

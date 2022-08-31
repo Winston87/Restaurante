@@ -9,14 +9,14 @@ class RemoveOrdersServices {
 
     async execute({order_id}: DeleteTable ) {
 
-        const deletOrder = await prismaClient.order.delete({
+        const table = await prismaClient.order.delete({
 
             where: {
                 id: order_id
             }
         });
 
-        return deletOrder;
+        return table;
 
     }
 }

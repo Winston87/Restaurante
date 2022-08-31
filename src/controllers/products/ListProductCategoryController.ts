@@ -7,9 +7,9 @@ class ListProductCategoryController {
 
         const category_id = req.query.category_id as string; // busca o id na query e afirma que este e uma string
 
-        const category = new ListProductCategoryServices();
+        const categoryServices = new ListProductCategoryServices();
 
-        const products = await category.execute({
+        const products = await categoryServices.execute({
             category_id
         });
 

@@ -1,12 +1,12 @@
 import { Request, Response} from 'express';
-import { CommissionServices } from   '../../services/commission/CommissionServices'
-class CommissionController {
+import { CreateCommissionServices } from   '../../services/commission/CreateCommissionServices'
+class CreateCommissionController {
 
     async handle(req: Request, res: Response) {
 
         const  {user_id, amount, price, sales} = req.body
 
-        const sale = new CommissionServices();
+        const sale = new CreateCommissionServices();
 
         const comissao = await sales.execute({
             user_id,
@@ -22,7 +22,7 @@ class CommissionController {
 }
 
 
-export { CommissionController }
+export { CreateCommissionController }
 
 // SELECT DISTINCT * FROM  itens WHERE ordem_id = 'f2a8253f-45c8-412f-a367-67c9ad60573d'
 // SELECT * FROM itens WHERE product_id = '9415daa1-550d-4893-a83b-bcedde21491c'

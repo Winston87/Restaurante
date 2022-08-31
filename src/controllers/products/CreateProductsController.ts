@@ -11,7 +11,7 @@ class CreateProductsController {
 
 
 
-        const createProduct = new CreateProductsServices();
+        const productServices = new CreateProductsServices();
 
         if(!req.file) {
 
@@ -21,7 +21,7 @@ class CreateProductsController {
 
             const { originalname, filename: banner } = req.file
 
-            const product = await createProduct.execute({
+            const product = await productServices.execute({
                 name,
                 price,
                 description,

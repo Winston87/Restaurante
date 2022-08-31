@@ -1,6 +1,6 @@
 import prismaClient from "../../prisma";
 
-interface Product {
+interface CreateProduct {
 
     name: string,
     price: string,
@@ -11,7 +11,7 @@ interface Product {
 
 class CreateProductsServices {
 
-    async execute({name, price, description, banner, category_id}: Product) {
+    async execute({name, price, description, banner, category_id}: CreateProduct) {
 
         const product = await prismaClient.product.create({
 
@@ -36,5 +36,6 @@ class CreateProductsServices {
 
     }
 }
+
 
 export { CreateProductsServices }

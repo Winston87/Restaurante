@@ -1,6 +1,6 @@
 import  prismaClient  from "../../prisma";
 
-interface OrdersProduct {
+interface CreateProductOrder {
 
     table: number,
     name: string
@@ -8,7 +8,7 @@ interface OrdersProduct {
 
 class CreateOrdersServices {
 
-    async execute({table, name}: OrdersProduct) {
+    async execute({table, name}: CreateProductOrder) {
 
         const orders = await prismaClient.order.create({
 

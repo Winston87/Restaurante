@@ -7,9 +7,10 @@ class RemoveOrdersController {
 
         const order_id = req.query.order_id as string;
 
-        const removeOrder = new RemoveOrdersServices();
 
-        const order = await removeOrder.execute({
+        const removeOrderServices = new RemoveOrdersServices();
+
+        const order = await removeOrderServices.execute({
 
             order_id
         });
@@ -22,3 +23,4 @@ class RemoveOrdersController {
 
 
 export { RemoveOrdersController }
+

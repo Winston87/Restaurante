@@ -7,9 +7,9 @@ class DetailUserController {
 
         const user_id = req.user_id;
 
-        const datailUser = new  DetailUserService();
+        const datailUserServices = new  DetailUserService();
 
-        const user = await datailUser.execute(user_id);
+        const user = await datailUserServices.execute(user_id);
 
         return res.json(user);
 

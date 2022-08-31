@@ -1,4 +1,3 @@
-import { Prisma } from '.prisma/client';
 import prismaClient from "../../prisma";
 
 interface DetailOrder {
@@ -10,7 +9,9 @@ class DetailOrderServices {
 
     async execute({order_id}: DetailOrder) {
 
+
         const orders = await prismaClient.item.findMany({
+
 
             where: {
                 ordem_id: order_id
@@ -18,6 +19,11 @@ class DetailOrderServices {
             select: {
                 id: true,
                 amount: true,
+                order: {
+                    select: {
+                        status: true
+                    }
+                },
 
                 product: {
                     select: {
@@ -32,6 +38,8 @@ class DetailOrderServices {
             },
 
         });
+
+
 
         return orders;
     }

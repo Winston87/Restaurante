@@ -1,16 +1,16 @@
 import { Prisma } from ".prisma/client";
 import prismaClient from "../../prisma";
 
-interface ProductsCategory {
+interface ListProducts {
 
     category_id: string
 }
 
 class ListProductCategoryServices {
 
-    async execute({category_id}: ProductsCategory) {
+    async execute({category_id}: ListProducts) {
 
-        const getFindProducts = prismaClient.product.findMany({
+        const ProductsAll = prismaClient.product.findMany({
 
             where: {
                 category_id: category_id

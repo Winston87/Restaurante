@@ -1,3 +1,4 @@
+// abrir mesa
 import { Request, Response } from "express";
 import { CreateOrdersServices } from "../../services/orders/CreateOrdersServices";
 
@@ -7,9 +8,9 @@ class CreateOrdersController {
 
         const { table, name } = req.body;
 
-        const ordersProduct = new CreateOrdersServices();
+        const ordersProductServices = new CreateOrdersServices();
 
-        const orders = await ordersProduct.execute({
+        const orders = await ordersProductServices.execute({
 
             table,
             name

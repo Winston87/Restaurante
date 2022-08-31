@@ -1,3 +1,4 @@
+//liberar pedido para a mesa
 import { Request, Response } from "express";
 import { FinishOrderServices } from "../../services/orders/FinishOrderServices";
 
@@ -7,9 +8,9 @@ class FinishOrderController {
 
         const { order_id } = req.body;
 
-        const orders = new FinishOrderServices();
+        const ordersServices = new FinishOrderServices();
 
-        const FinishOrder = await orders.exeute({
+        const FinishOrder = await ordersServices.exeute({
 
             order_id
         });

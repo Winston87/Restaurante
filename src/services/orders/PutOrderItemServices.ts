@@ -10,7 +10,7 @@ class PutOrderItemService {
 
     async execute({item_id, amount}: PutItem){
 
-        const itemUpdate = prismaClient.item.update({
+        const item = prismaClient.item.update({
            where: {
             id: item_id,
 
@@ -26,9 +26,12 @@ class PutOrderItemService {
 
         });
 
+
+
+
         const itens = prismaClient.item.findMany({
             where: {
-                ordem_id: (await itemUpdate).ordem_id
+                ordem_id: (await item).ordem_id
             },
             select: {
                 id: true,
