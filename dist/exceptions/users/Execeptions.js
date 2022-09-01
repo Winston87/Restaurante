@@ -17,6 +17,7 @@ const prisma_1 = __importDefault(require("../../prisma"));
 const bcryptjs_1 = require("bcryptjs");
 const MensegeError_1 = require("../../exceptions/mensege/MensegeError");
 class InternalError {
+    //validar campos de cadastro
     execute({ email, name, password }) {
         return __awaiter(this, void 0, void 0, function* () {
             if (!name.trim()) {
@@ -28,6 +29,7 @@ class InternalError {
             if (password.length < 6) {
                 throw new MensegeError_1.Mensege(MensegeError_1.erros.SENHA_MENOR);
             }
+            //validar email se existe no banco
             const emailExist = yield prisma_1.default.user.findFirst({
                 where: {
                     email: email
@@ -36,6 +38,7 @@ class InternalError {
             if (emailExist) {
                 throw new MensegeError_1.Mensege(MensegeError_1.erros.EMAIL_EXISTENTE);
             }
+            // validar email
             let regex = new RegExp(MensegeError_1.erros.VALIDA_TIPO_EMAIL);
             const valid = regex.test(email);
             if (!valid) {
@@ -43,6 +46,7 @@ class InternalError {
             }
         });
     }
+    // validar campos de login
     executeLogout({ email, password }) {
         return __awaiter(this, void 0, void 0, function* () {
             if (!email.trim()) {

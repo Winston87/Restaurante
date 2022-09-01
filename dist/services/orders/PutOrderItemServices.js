@@ -53,3 +53,15 @@ class PutOrderItemService {
     }
 }
 exports.PutOrderItemService = PutOrderItemService;
+// const putItem =  prismaClient.item.update({
+//     where: {
+//         id: item_id
+//     },
+//     data: {
+//         product: {
+//             update: {
+//                 price: price
+//             }
+//         }
+//     }
+// });

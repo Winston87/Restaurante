@@ -20,6 +20,7 @@ class CreateUserServices {
     execute({ name, email, password }) {
         return __awaiter(this, void 0, void 0, function* () {
             const userExcption = new Execeptions_1.InternalError();
+            //validar campos
             yield userExcption.execute({ email, name, password });
             const passwordHash = yield (0, bcryptjs_1.hash)(password, 8);
             const salvarUser = yield prisma_1.default.user.create({

@@ -14,7 +14,7 @@ const CreateUserServices_1 = require("../../services/users/CreateUserServices");
 class CreatUserController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { name, email, password } = req.body;
+            const { name, email, password } = req.body; // recebendo requisição
             const userServices = new CreateUserServices_1.CreateUserServices();
             const user = yield userServices.execute({ name, email, password });
             return res.json(user);

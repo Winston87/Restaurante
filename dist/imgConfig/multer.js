@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+// configura onde eu quero salvar o que eu quero salvar e como quero
 const crypto_1 = __importDefault(require("crypto"));
 const multer_1 = __importDefault(require("multer"));
 const path_1 = require("path");

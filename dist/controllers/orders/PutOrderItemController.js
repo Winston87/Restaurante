@@ -27,6 +27,7 @@ class PutOrderItemController {
             const dataItem = yield dataServices.data({
                 item_id
             });
+            // atualizar comisssao caso tenha alteração nos itens
             let sum = (parseFloat(dataItem.price) * amount);
             yield putDataItemServices.execute({
                 item_id,

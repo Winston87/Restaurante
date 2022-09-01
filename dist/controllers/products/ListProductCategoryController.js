@@ -14,7 +14,7 @@ const ListProductCategoryServices_1 = require("../../services/products/ListProdu
 class ListProductCategoryController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const category_id = req.query.category_id;
+            const category_id = req.query.category_id; // busca o id na query e afirma que este e uma string
             const categoryServices = new ListProductCategoryServices_1.ListProductCategoryServices();
             const products = yield categoryServices.execute({
                 category_id

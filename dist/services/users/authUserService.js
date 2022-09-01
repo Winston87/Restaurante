@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthUserServie = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 const Execeptions_1 = require("../../exceptions/users/Execeptions");
-const jsonwebtoken_1 = require("jsonwebtoken");
+const jsonwebtoken_1 = require("jsonwebtoken"); // registra e GERA UM TOKEM
 class AuthUserServie {
     execute({ email, password }) {
         return __awaiter(this, void 0, void 0, function* () {

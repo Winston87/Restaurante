@@ -21,6 +21,7 @@ class RemoveItemController {
             const remove = yield itemRemoveServices.execute({
                 item_id
             });
+            // remover item da comissao
             yield commissionRemoveServices.execute({
                 item_id: remove.id
             });
