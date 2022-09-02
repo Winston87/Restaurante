@@ -59,7 +59,7 @@ router.get('/categorys/list', ValidAuth, new ListCategoryController().handle); /
 //rotas product
 router.post('/product', ValidAuth, foto.single('file'), new CreateProductsController().handle); // cadastrar categoria
 router.get('/category/products',ValidAuth, new ListProductCategoryController().handle ); // listar categoria
-router.get('/product/search/update' ,ValidAuth, new GetProductsController().handle);// buscar produtos
+router.get('/product/list' ,ValidAuth, new GetProductsController().handle);// buscar produtos
 router.put('/product/update',foto.single('file'), new PutProductController().handle); // atualizar um produto
 
 
