@@ -1,19 +1,19 @@
 import prismaClient from "../../prisma";
 
-interface GetProduct {
-
-    id: string
-}
 
 class GetProductsServices {
 
-    async execute({id}: GetProduct) {
+    async execute() {
 
-        const product = prismaClient.product.findFirst({
-            where: {
-                id: id
-
+        const product = prismaClient.product.findMany({
+            select: {
+                id: true,
+                name: true,
+                description: true,
+                price: true,
+                banner: true
             }
+
         });
 
         return product;
