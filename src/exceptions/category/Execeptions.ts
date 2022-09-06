@@ -1,4 +1,4 @@
-import  prismaClient  from '../../prisma';
+
 import { erros, Mensege } from '../mensege/MensegeError';
 
 interface validCategory {
@@ -18,4 +18,5 @@ class ExceptionCategory {
 }
 
 export { ExceptionCategory }
+
 

@@ -1,17 +1,15 @@
 import prismaClient from "../../prisma";
 
-interface GetBanner {
-
-    banner: string
-}
 
 class GetBannerProductsServices {
 
-    async execute({banner}: GetBanner) {
+    async execute() {
 
-        const getBanner = prismaClient.product.findFirst({
-            where: {
-                banner: banner
+
+
+        const getBanner = prismaClient.product.findMany({
+            select: {
+                banner: true
             }
         });
 

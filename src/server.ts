@@ -15,11 +15,11 @@ require("dotenv").config();
 
 const app = express();
 
-app.use(express.json()); // fala que o tipo de arquivo e json
+app.use(express.json());
 
 app.use(cors());
 
-app.use(router);// fala que minhas rotas esta dentro de router
+app.use(router);
 
 
 //crindo uma rota static para mostrar a foto no front

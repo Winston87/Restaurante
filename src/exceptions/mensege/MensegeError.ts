@@ -20,3 +20,4 @@ class Mensege extends Error {
 }
 
 export { Mensege, erros }
+

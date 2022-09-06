@@ -11,6 +11,8 @@ class GetProductsController {
 
         const product = await productServices.execute();
 
+        
+
 
 
         return res.json(product);

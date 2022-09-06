@@ -11,7 +11,10 @@ class GetProductsServices {
                 name: true,
                 description: true,
                 price: true,
-                banner: true
+                banner: true,
+                category_id: true
+
+
             }
 
         });

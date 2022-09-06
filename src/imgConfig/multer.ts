@@ -5,7 +5,7 @@ import { extname, resolve } from 'path'
 
 export default {
 
-    upload(folder: string) { // para falar onde eu quero salvar as img
+    upload(folder: string) {
         return {
 
             storage: multer.diskStorage({
@@ -24,3 +24,4 @@ export default {
 
     }
 }
+

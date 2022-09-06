@@ -105,3 +105,4 @@ model Menu {
 
     @@map("cardapio")
 }
+

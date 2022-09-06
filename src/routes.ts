@@ -18,6 +18,7 @@ import { CreateProductsController } from "./controllers/products/CreateProductsC
 import { ListProductCategoryController } from "./controllers/products/ListProductCategoryController";
 import { PutProductController } from "./controllers/products/PutProductController";
 import { GetProductsController } from "./controllers/products/GetProductsController";
+import { GetBannerProductsController } from "./controllers/products/GetBannerProductsController";
 
 // comission
 import { CreateCommissionController } from "./controllers/commission/CommissionController";////////////////////////////////////////////////////////////
@@ -60,6 +61,8 @@ router.get('/categorys/list', ValidAuth, new ListCategoryController().handle); /
 router.post('/product', ValidAuth, foto.single('file'), new CreateProductsController().handle); // cadastrar categoria
 router.get('/category/products',ValidAuth, new ListProductCategoryController().handle ); // listar categoria
 router.get('/product/list' ,ValidAuth, new GetProductsController().handle);// buscar produtos
+router.get('/files' , new GetBannerProductsController().handle);// buscar produtos
+
 router.put('/product/update',foto.single('file'), new PutProductController().handle); // atualizar um produto
 
 
@@ -85,4 +88,5 @@ router.post('/menu/upload',ValidAuth, menu.single('file'), new UploadMenuControl
 router.post('/comissao',ValidAuth, new CreateCommissionController().handle); ///////////////////////////////////////////////////////
 
 export { router }// exportar router
+
 

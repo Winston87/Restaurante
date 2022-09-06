@@ -39,6 +39,7 @@ class InternalError {
             }
         });
 
+
         if(emailExist) {
             throw new Mensege(erros.EMAIL_EXISTENTE);
         }
