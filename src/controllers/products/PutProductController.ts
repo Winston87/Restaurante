@@ -6,7 +6,7 @@ class PutProductController {
 
     async handle(req: Request, res: Response) {
 
-        const {product__id, name, price, description } = req.body;
+        const {product_id, name, price, description, category_id } = req.body
 
         const productServices = new PutProductServices();
 
@@ -21,11 +21,12 @@ class PutProductController {
 
             const product =  await productServices.execute({
 
-                product__id,
+                product_id,
                 name,
                 price,
                 description,
-                banner
+                banner,
+                category_id
 
             });
 

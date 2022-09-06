@@ -15,17 +15,18 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.PutProductServices = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class PutProductServices {
-    execute({ product__id, name, price, description, banner }) {
+    execute({ product_id, name, price, description, banner, category_id }) {
         return __awaiter(this, void 0, void 0, function* () {
             const product = prisma_1.default.product.update({
                 where: {
-                    id: product__id
+                    id: product_id
                 },
                 data: {
                     name: name,
                     price: price,
                     description: description,
-                    banner: banner
+                    banner: banner,
+                    category_id: category_id
                 }
             });
             return product;

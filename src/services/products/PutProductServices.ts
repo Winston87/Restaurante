@@ -3,21 +3,22 @@ import prismaClient from "../../prisma";
 
 interface PutProduct {
 
-    product__id: string
+    product_id: string
     name: string
     price: string
     description: string
     banner: string
+    category_id: string
 
 }
 class PutProductServices {
 
-    async execute({product__id, name, price, description, banner}: PutProduct) {
+    async execute({product_id, name, price, description, banner, category_id }: PutProduct) {
 
         const product = prismaClient.product.update({
 
             where: {
-                id: product__id
+                id: product_id
 
             },
             data: {
@@ -25,7 +26,9 @@ class PutProductServices {
                 name: name ,
                 price: price,
                 description: description,
-                banner: banner
+                banner: banner,
+                category_id: category_id
+
 
             }
         });

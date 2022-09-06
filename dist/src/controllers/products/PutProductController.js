@@ -15,7 +15,7 @@ const MensegeError_1 = require("../../exceptions/mensege/MensegeError");
 class PutProductController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { product__id, name, price, description } = req.body;
+            const { product_id, name, price, description, category_id } = req.body;
             const productServices = new PutProductServices_1.PutProductServices();
             if (!req.file) {
                 throw new MensegeError_1.Mensege(MensegeError_1.erros.FALHA_SALVA_IMAGEM);
@@ -23,11 +23,12 @@ class PutProductController {
             else {
                 const { originalname, filename: banner } = req.file;
                 const product = yield productServices.execute({
-                    product__id,
+                    product_id,
                     name,
                     price,
                     description,
-                    banner
+                    banner,
+                    category_id
                 });
                 return res.json(product);
             }
