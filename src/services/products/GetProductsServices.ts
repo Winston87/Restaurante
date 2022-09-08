@@ -17,7 +17,7 @@ class GetProductsServices {
 
         });
 
-        return product;
+        return (await product).reverse();
     }
 
 }

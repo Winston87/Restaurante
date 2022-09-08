@@ -27,7 +27,7 @@ class GetProductsServices {
                     category_id: true
                 }
             });
-            return product;
+            return (yield product).reverse();
         });
     }
 }

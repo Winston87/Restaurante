@@ -8,16 +8,31 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GetProductsController = void 0;
-const GetProductsServices_1 = require("../../services/products/GetProductsServices");
-class GetProductsController {
-    handle(req, res) {
+exports.GetSearchProductServices = void 0;
+const prisma_1 = __importDefault(require("../../prisma"));
+class GetSearchProductServices {
+    execute({ search }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const productServices = new GetProductsServices_1.GetProductsServices();
-            const product = yield productServices.execute();
-            return res.json(product);
+            const product = prisma_1.default.product.findMany({
+                where: {
+                    name: search
+                },
+                orderBy: {
+                    name: 'asc'
+                },
+                select: {
+                    name: true,
+                    description: true,
+                    price: true,
+                    category: true
+                }
+            });
+            return product;
         });
     }
 }
-exports.GetProductsController = GetProductsController;
+exports.GetSearchProductServices = GetSearchProductServices;
