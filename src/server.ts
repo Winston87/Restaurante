@@ -33,16 +33,17 @@ app.use(
     express.static(path.resolve(__dirname, '..', 'imgMenu'))
 );
 
-//app.use(FileUpload());
 
 //**** tratamento de erro */
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-    if(err instanceof Error) {
+    if(err instanceof Error ) {
 
         return res.status(400).json({
             error: err.message
         })
     }
+
+
 
     return res.status(500).json({
 

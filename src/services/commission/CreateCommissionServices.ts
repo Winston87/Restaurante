@@ -11,7 +11,7 @@ interface CreateComissionOrder {
 
 class CreateCommissionServices {
 
-    async execute({item_id,user_id, amount , price, sales}: CreateComissionOrder) {
+    async execute({item_id, user_id, amount , price, sales}: CreateComissionOrder) {
 
         const comission = prismaClient.commission.create({
 

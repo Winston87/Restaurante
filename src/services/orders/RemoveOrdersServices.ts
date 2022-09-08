@@ -19,6 +19,7 @@ class RemoveOrdersServices {
         return table;
 
     }
+
 }
 
 export { RemoveOrdersServices }

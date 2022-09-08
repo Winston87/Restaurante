@@ -20,7 +20,7 @@ const CreateProductsController_1 = require("./controllers/products/CreateProduct
 const ListProductCategoryController_1 = require("./controllers/products/ListProductCategoryController");
 const PutProductController_1 = require("./controllers/products/PutProductController");
 const GetProductsController_1 = require("./controllers/products/GetProductsController");
-const GetBannerProductsController_1 = require("./controllers/products/GetBannerProductsController");
+const RemoveProductsController_1 = require("./controllers/products/RemoveProductsController");
 // comission
 const CommissionController_1 = require("./controllers/commission/CommissionController"); ////////////////////////////////////////////////////////////
 //order
@@ -55,7 +55,7 @@ router.get('/categorys/list', ValidAuthenticated_1.ValidAuth, new ListCategoryCo
 router.post('/product', ValidAuthenticated_1.ValidAuth, foto.single('file'), new CreateProductsController_1.CreateProductsController().handle); // cadastrar categoria
 router.get('/category/products', ValidAuthenticated_1.ValidAuth, new ListProductCategoryController_1.ListProductCategoryController().handle); // listar categoria
 router.get('/product/list', ValidAuthenticated_1.ValidAuth, new GetProductsController_1.GetProductsController().handle); // buscar produtos
-router.get('/files', new GetBannerProductsController_1.GetBannerProductsController().handle); // buscar produtos
+router.delete('/product/remove', new RemoveProductsController_1.RemoveProductsController().handle); // buscar produtos
 router.put('/product/update', foto.single('file'), new PutProductController_1.PutProductController().handle); // atualizar um produto
 //rotas orders
 router.post('/order', ValidAuthenticated_1.ValidAuth, new CreateOrdersController_1.CreateOrdersController().handle); // abrir pedido mesa

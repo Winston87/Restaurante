@@ -24,6 +24,7 @@ class AddItemController {
                 product_id,
                 amount
             });
+            console.log(user_id);
             // adicionar venda na comissao
             let sum = (parseFloat(itens.product.price) * amount);
             let sum_commission = ((5.8 * sum) / 100);

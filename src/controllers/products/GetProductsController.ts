@@ -1,7 +1,6 @@
 
 import {  Request, Response } from "express";
 import { GetProductsServices } from "../../services/products/GetProductsServices";
-import { GetBannerProductsServices } from "../../services/products/GetBannerProductsServices"
 
 class GetProductsController {
 
@@ -11,7 +10,7 @@ class GetProductsController {
 
         const product = await productServices.execute();
 
-        
+
 
 
 
