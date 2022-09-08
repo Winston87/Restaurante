@@ -26,7 +26,7 @@ class PutProductServices {
                     price: price,
                     description: description,
                     banner: banner,
-                    category_id: category_id
+                    category_id: category_id,
                 }
             });
             return product;

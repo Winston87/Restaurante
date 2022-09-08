@@ -66,6 +66,7 @@ router.delete('/product/remove' , new RemoveProductsController().handle);// busc
 router.put('/product/update',foto.single('file'), new PutProductController().handle); // atualizar um produto
 
 
+
 //rotas orders
 router.post('/order', ValidAuth, new CreateOrdersController().handle); // abrir pedido mesa
 router.delete('/order/remover/table', ValidAuth, new RemoveOrdersController().handle ); // deletar mesa

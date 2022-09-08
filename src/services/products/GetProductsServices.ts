@@ -13,8 +13,6 @@ class GetProductsServices {
                 price: true,
                 banner: true,
                 category_id: true
-
-
             }
 
         });

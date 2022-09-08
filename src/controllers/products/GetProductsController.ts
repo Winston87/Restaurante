@@ -10,11 +10,7 @@ class GetProductsController {
 
         const product = await productServices.execute();
 
-
-
-
-
-        return res.json(product);
+        return res.json(product.reverse());
 
 
     }

@@ -16,7 +16,7 @@ class GetProductsController {
         return __awaiter(this, void 0, void 0, function* () {
             const productServices = new GetProductsServices_1.GetProductsServices();
             const product = yield productServices.execute();
-            return res.json(product);
+            return res.json(product.reverse());
         });
     }
 }
