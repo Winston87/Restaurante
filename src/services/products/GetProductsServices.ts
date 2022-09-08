@@ -7,7 +7,7 @@ class GetProductsServices {
 
         const product = prismaClient.product.findMany({
             select: {
-                id: true,
+
                 name: true,
                 description: true,
                 price: true,

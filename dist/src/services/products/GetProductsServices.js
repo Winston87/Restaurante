@@ -19,7 +19,6 @@ class GetProductsServices {
         return __awaiter(this, void 0, void 0, function* () {
             const product = prisma_1.default.product.findMany({
                 select: {
-                    id: true,
                     name: true,
                     description: true,
                     price: true,
