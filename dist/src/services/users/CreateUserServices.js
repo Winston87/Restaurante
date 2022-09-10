@@ -17,22 +17,24 @@ const prisma_1 = __importDefault(require("../../prisma"));
 const Execeptions_1 = require("../../exceptions/users/Execeptions");
 const bcryptjs_1 = require("bcryptjs");
 class CreateUserServices {
-    execute({ name, email, password }) {
+    execute({ name, email, permission_id, password }) {
         return __awaiter(this, void 0, void 0, function* () {
             const userExcption = new Execeptions_1.InternalError();
             //validar campos
             yield userExcption.execute({ email, name, password });
             const passwordHash = yield (0, bcryptjs_1.hash)(password, 8);
-            const salvarUser = yield prisma_1.default.user.create({
+            const salvarUser = prisma_1.default.user.create({
                 data: {
                     name: name.toUpperCase(),
                     email: email,
-                    password: passwordHash
+                    permission_id: permission_id,
+                    password: passwordHash,
                 },
                 select: {
                     id: true,
                     name: true,
-                    email: true
+                    email: true,
+                    permission: true
                 }
             });
             return salvarUser;

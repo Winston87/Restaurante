@@ -9,16 +9,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreatUserController = void 0;
-const CreateUserServices_1 = require("../../services/users/CreateUserServices");
-class CreatUserController {
+exports.GetPermissionController = void 0;
+const GetPermissionServices_1 = require("../../services/permission/GetPermissionServices");
+class GetPermissionController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { name, email, permission_id, password } = req.body; // recebendo requisição
-            const userServices = new CreateUserServices_1.CreateUserServices();
-            const user = yield userServices.execute({ name, email, permission_id, password });
-            return res.json(user);
+            const permissionServices = new GetPermissionServices_1.GetPermissionServices();
+            const permission = yield permissionServices.execute();
+            return res.json(permission);
         });
     }
 }
-exports.CreatUserController = CreatUserController;
+exports.GetPermissionController = GetPermissionController;

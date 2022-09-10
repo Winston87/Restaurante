@@ -1,4 +1,3 @@
-
 import { erros, Mensege } from '../mensege/MensegeError';
 
 interface validCategory {
@@ -13,6 +12,8 @@ class ExceptionCategory {
         if(!name.trim()){
             throw  new Mensege(erros.NOME_EM_BRANCO);
        }
+
+
      }
 
 }

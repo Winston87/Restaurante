@@ -22,9 +22,9 @@ class PutProductServices {
                     id: product_id
                 },
                 data: {
-                    name: name,
+                    name: name.toUpperCase(),
                     price: price,
-                    description: description,
+                    description: description.toLowerCase(),
                     banner: banner,
                     category_id: category_id,
                 }

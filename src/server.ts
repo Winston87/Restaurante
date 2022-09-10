@@ -1,6 +1,5 @@
 import dotenv from 'dotenv'
 import  express , { Request, Response, NextFunction}  from "express";
-import FileUpload from 'express-fileupload';
 import 'express-async-errors';
 import cors from 'cors';
 import path from 'path';
@@ -9,7 +8,6 @@ import path from 'path';
  * ts-node-dev -D e fazer script no jsompackge
  */
 import { router } from "./routes";
-
 require("dotenv").config();
 
 

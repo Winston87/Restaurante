@@ -12,25 +12,19 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateCategoryServeces = void 0;
+exports.GetPermissionServices = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
-const Execeptions_1 = require("../../exceptions/category/Execeptions");
-class CreateCategoryServeces {
-    execute({ name }) {
+class GetPermissionServices {
+    execute() {
         return __awaiter(this, void 0, void 0, function* () {
-            const categoryExcption = new Execeptions_1.ExceptionCategory();
-            yield categoryExcption.executeCategory({ name });
-            const category = prisma_1.default.category.create({
-                data: {
-                    name: name.toUpperCase()
-                },
+            const permission = prisma_1.default.permission.findMany({
                 select: {
                     id: true,
-                    name: true
+                    description: true
                 }
             });
-            return category;
+            return permission;
         });
     }
 }
-exports.CreateCategoryServeces = CreateCategoryServeces;
+exports.GetPermissionServices = GetPermissionServices;

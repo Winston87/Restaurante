@@ -12,9 +12,9 @@ class CreateCategoryServeces {
 
         const categoryExcption = new ExceptionCategory();
 
-        await categoryExcption.executeCategory({ name })
+        await categoryExcption.executeCategory({ name });
 
-        const category = await prismaClient.category.create({
+        const category = prismaClient.category.create({
             data: {
                 name:name.toUpperCase()
             },
@@ -23,7 +23,7 @@ class CreateCategoryServeces {
                 id: true,
                 name: true
             }
-        })
+        });
 
         return category;
 

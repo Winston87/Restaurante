@@ -8,8 +8,11 @@ const express_1 = require("express");
 const multer_1 = __importDefault(require("multer"));
 //user
 const CreateUserController_1 = require("./controllers/users/CreateUserController");
-const AuthUserController_1 = require("./controllers/users/AuthUserController");
+const AuthUserAdminController_1 = require("./controllers/users/AuthUserAdminController");
+const AuthUserCollboratorController_1 = require("./controllers/users/AuthUserCollboratorController");
 const DetailUserController_1 = require("./controllers/users/DetailUserController");
+//permission
+const CreatePermissionController_1 = require("./controllers/permission/CreatePermissionController");
 //validar acesso via token
 const ValidAuthenticated_1 = require("./middleware/ValidAuthenticated");
 //category
@@ -46,8 +49,11 @@ const foto = (0, multer_1.default)(multer_2.default.upload("imgBanner")); // loc
 const menu = (0, multer_1.default)(multer_2.default.upload("imgMenu"));
 // rotas user
 router.post('/users', new CreateUserController_1.CreatUserController().handle); // cadastrar usuario
-router.post('/session', new AuthUserController_1.AuthUserController().handle); // login usuario
+router.post('/session', new AuthUserAdminController_1.AuthUserAdminController().handle); // login usuario
+router.post('/session/collaborator', new AuthUserCollboratorController_1.AuthUserCollaboratorController().handle); // login garcon
 router.get('/detail', ValidAuthenticated_1.ValidAuth, new DetailUserController_1.DetailUserController().handle); // detalhe usuario
+//permission
+router.post('/permission', new CreatePermissionController_1.CreatePermissionController().handle); // criar permissao
 //rotas category
 router.post('/category', ValidAuthenticated_1.ValidAuth, new CreateCategoryController_1.CreateCategoryController().handle); // cadastrar categoria
 router.get('/categorys/list', ValidAuthenticated_1.ValidAuth, new ListCategoryController_1.ListCategoryController().handle); // listar categoria

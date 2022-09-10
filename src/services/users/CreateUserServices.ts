@@ -7,12 +7,12 @@ interface UserRequest {
     name: string
     email: string
     password: string
+    permission_id: string
 }
 
 class CreateUserServices {
 
-
-    async execute({ name, email, password }: UserRequest) {
+    async execute({ name, email, password, permission_id }: UserRequest) {
 
         const userExcption = new InternalError();
 
@@ -25,15 +25,19 @@ class CreateUserServices {
             data: {
                 name: name.toUpperCase(),
                 email: email,
-                password: passwordHash
+                permission_id:  permission_id,
+                password: passwordHash,
+
+
             },
             select:{
                 id: true,
                 name: true,
-                email: true
-            }
-    })
+                email: true,
+                permission: true
 
+            }
+        });
 
         return salvarUser
 

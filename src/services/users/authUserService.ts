@@ -2,6 +2,7 @@ import  prismaClient  from '../../prisma';
 import { InternalError } from '../../exceptions/users/Execeptions';
 import { sign }  from 'jsonwebtoken' // registra e GERA UM TOKEM
 
+
 interface AuthRequest {
 
     email: string
@@ -32,11 +33,11 @@ class AuthUserServie {
 
         );
 
-
         return {
             id: user.id,
             name: user.name,
             email: user.email,
+            permission_id: user.permission_id,
             tokem: tokem
         }
 
@@ -44,4 +45,5 @@ class AuthUserServie {
 }
 
 export { AuthUserServie }
+
 

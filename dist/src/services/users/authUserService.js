@@ -35,6 +35,7 @@ class AuthUserServie {
                 id: user.id,
                 name: user.name,
                 email: user.email,
+                permission_id: user.permission_id,
                 tokem: tokem
             };
         });

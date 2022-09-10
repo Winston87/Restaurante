@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
-import { AuthUserServie } from '../../services/users/authUserService';
-class AuthUserController {
+import { AuthUserServie } from "../../services/users/authUserService";
+
+class AuthUserCollaboratorController {
 
     async handle(req: Request , res: Response) {
 
@@ -10,13 +11,13 @@ class AuthUserController {
 
        const auth = await authUserService.execute({
            email, password
-       })
+       });
 
        return res.json(auth);
     }
 
 }
 
-export { AuthUserController }
+export { AuthUserCollaboratorController }
 
 

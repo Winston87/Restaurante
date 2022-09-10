@@ -3,8 +3,12 @@ import multer from 'multer';
 
 //user
 import { CreatUserController } from "./controllers/users/CreateUserController";
-import { AuthUserController } from "./controllers/users/AuthUserController";
+import { AuthUserAdminController } from "./controllers/users/AuthUserAdminController";
+import { AuthUserCollaboratorController } from "./controllers/users/AuthUserCollboratorController";
 import { DetailUserController } from "./controllers/users/DetailUserController";
+
+//permission
+import { CreatePermissionController } from "./controllers/permission/CreatePermissionController";
 
 //validar acesso via token
 import { ValidAuth } from "./middleware/ValidAuthenticated";
@@ -50,8 +54,12 @@ const menu = multer(upLoadConfig.upload("imgMenu"));
 
 // rotas user
 router.post('/users', new CreatUserController().handle);// cadastrar usuario
-router.post('/session', new AuthUserController().handle);// login usuario
+router.post('/session', new AuthUserAdminController().handle);// login usuario
+router.post('/session/collaborator', new AuthUserCollaboratorController().handle);// login garcon
 router.get('/detail',ValidAuth, new DetailUserController().handle ); // detalhe usuario
+
+//permission
+router.post('/permission', new CreatePermissionController().handle); // criar permissao
 
 //rotas category
 router.post('/category',ValidAuth, new CreateCategoryController().handle); // cadastrar categoria
@@ -62,9 +70,7 @@ router.post('/product', ValidAuth, foto.single('file'), new CreateProductsContro
 router.get('/category/products',ValidAuth, new ListProductCategoryController().handle ); // listar categoria
 router.get('/product/list' ,ValidAuth, new GetProductsController().handle);// buscar produtos
 router.delete('/product/remove' , new RemoveProductsController().handle);// buscar produtos
-
 router.put('/product/update',foto.single('file'), new PutProductController().handle); // atualizar um produto
-
 
 
 //rotas orders

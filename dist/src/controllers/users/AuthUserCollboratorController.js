@@ -8,29 +8,19 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateCategoryServeces = void 0;
-const prisma_1 = __importDefault(require("../../prisma"));
-const Execeptions_1 = require("../../exceptions/category/Execeptions");
-class CreateCategoryServeces {
-    execute({ name }) {
+exports.AuthUserCollaboratorController = void 0;
+const authUserService_1 = require("../../services/users/authUserService");
+class AuthUserCollaboratorController {
+    handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const categoryExcption = new Execeptions_1.ExceptionCategory();
-            yield categoryExcption.executeCategory({ name });
-            const category = prisma_1.default.category.create({
-                data: {
-                    name: name.toUpperCase()
-                },
-                select: {
-                    id: true,
-                    name: true
-                }
+            const { email, password } = req.body;
+            const authUserService = new authUserService_1.AuthUserServie();
+            const auth = yield authUserService.execute({
+                email, password
             });
-            return category;
+            return res.json(auth);
         });
     }
 }
-exports.CreateCategoryServeces = CreateCategoryServeces;
+exports.AuthUserCollaboratorController = AuthUserCollaboratorController;

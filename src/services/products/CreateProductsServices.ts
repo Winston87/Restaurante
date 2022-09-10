@@ -1,3 +1,4 @@
+import { AuthUserAdminController } from "../../controllers/users/AuthUserAdminController";
 import prismaClient from "../../prisma";
 
 interface CreateProduct {
@@ -18,7 +19,7 @@ class CreateProductsServices {
             data: {
                 name: name.toUpperCase(),
                 price: price,
-                description: description,
+                description: description.toLowerCase(),
                 banner: banner,
                 category_id: category_id
             },

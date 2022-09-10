@@ -19,10 +19,23 @@ model User {
     created_at DateTime? @default(now())
     updated_at DateTime? @default(now())
 
+    permission Permission @relation(fields: [permission_id], references: [id])
     @@map("usuarios")
 
+    permission_id String
     commission Commission[]
 
+}
+//ALTER TABLE usuarios ADD permission_id VARCHAR(20) NULL
+
+model Permission {
+
+    id String @id @default(uuid())
+    description String
+
+    @@map("permissao")
+
+    user User[]
 }
 
 model Commission {
